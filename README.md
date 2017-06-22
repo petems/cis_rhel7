@@ -17,22 +17,42 @@ This is a puppet module that makes adjustments to RHEL/CentOS 7 systems in compl
 CIS standard can be found here:
 https://benchmarks.cisecurity.org/tools2/linux/CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v1.0.0.pdf
 
-The rules that require manual intervention are not part of the scope.
+There were several modules that attempted to address CIS benchmark hardening.  What I found was that, most of the modules with the tag CIS did not do what it claimed to do.  Several modules simply did not run and it would've required for me to spend numerous hours just to get it running while others would run but score below 80% when scanned afterwards.
+
+Thus, I decided to take a module as a base and
+* Fill the gap so it would achieve 98% or above when scanned for CIS compliancy
+* Refactor the code so that it would be much cleaner.
+
+The features to highlight in this module as a result of refactoring are:
+1. Instead of params.pp, hiera became the data provider
+2. Cleaner code using Hiera hash lookup rather than accessing elements in arrays from params.pp which required parsing
+3. Added execute control (cis_rhel7::execcontrol) in common.yaml so that one has an option to apply a rule or not
+4. Added rule_specialperms.pp (and matching rule_specialperms hash in common.yaml) where one can add any extra hashes (file/dir: permission) to enforce permissions on files or directories
 
 ## Setup
 
 clone the module:
-    git clone https://github.com/bossbear/cis_rhel7.git
 
-(See Usage for staging dependent modules)
+    puppet module install bossbear-cis_rhel7
+    OR
+    git clone https://github.com/bossbear/cis_rhel7.git
+(See Usage below for staging dependent modules)
 
 ### What cis_rhel7 affects
 
-Pretty much the entire system.
+main list of subsystems impacted:
+* sshd (and anything that requires authentication)
+* auditd
+* cron
+* grub
+* su
+* kernel parameters
+* network parameters
+* selinux
 
 ### Setup Requirements
 
-This module requires 4 additional modules
+Currently, this module requires 4 additional modules:
 
 1. puppetlabs-stdlib
 2. herculesteam-augeasproviders_core
@@ -42,6 +62,7 @@ This module requires 4 additional modules
 ## Usage
 
 Once you've cloned it you can run it two ways:
+
 1. Stage all dependent modules in fixtures and run against spec/fixtures/modules directory.  Following the below steps as root:
 
         cd cis_rhel7
@@ -57,7 +78,6 @@ Once you've cloned it you can run it two ways:
         puppet module install fiddyspence-sysctl
         cd cis_rhel7
         puppet apply -v --modulepath /etc/puppetlabs/code/environment/production/modules examples/init.pp
-    
 Obviously, you can add --noop flag to run things in an audit mode.
 
 In order to run RSpec testing run the following commands:
