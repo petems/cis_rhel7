@@ -4,7 +4,6 @@ class cis_rhel7::rule::rule_6_1_1 (
   $dirs  = lookup({'name' => 'cis_rhel7::cron_dirs', 'default_value' => {}, 'merge' => {'strategy' => 'deep', 'merge_hash_arrays' => true}})
 
 ) {
-
   # includes Rules:
   # 6.1.1 - Enable anacron Daemon (Scored)
   # 6.1.2 - Enable crond Daemon (Scored)

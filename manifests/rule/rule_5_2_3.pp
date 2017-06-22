@@ -1,5 +1,4 @@
 class cis_rhel7::rule::rule_5_2_3 {
-
   # includes Rules:
   # 5.2.3 - Enable Auditing for Processes That Start Prior to auditd (Scored)
 

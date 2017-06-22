@@ -9,12 +9,9 @@ class cis_rhel7::rule::rule_1_4_4 {
     name   => 'setroubleshoot',
   }
 
-
   package { '(1.4.5) - remove MCS Translation Service':
     ensure => absent,
     name   => 'mcstrans',
   }
-
-
 
 } #EOF

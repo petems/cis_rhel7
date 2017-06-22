@@ -1,7 +1,7 @@
 class cis_rhel7::rule::rule_1_1_5 {
 
-# includes Rules:
-# 1.1.5, 1.1.6
+  # includes Rules:
+  # 1.1.5, 1.1.6
 
   file_line { '(1.1.5) /var is mounted':
     ensure => present,

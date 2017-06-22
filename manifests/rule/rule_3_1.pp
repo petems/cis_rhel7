@@ -1,13 +1,10 @@
 class cis_rhel7::rule::rule_3_1 {
-
   # includes Rules:
   # 3.1 - Set Daemon umask (Scored)
 
   $file = '/etc/sysconfig/init'
 
-  if $::operatingsystem == 'RedHat'
-  {
-
+  if $::operatingsystem == 'RedHat' {
     file { "(3.1) - ${file} exists":
       ensure => file,
       path   => $file,
@@ -22,10 +19,7 @@ class cis_rhel7::rule::rule_3_1 {
       line   => 'umask 027',
       match  => '^umask 027',
     }
-
-  }
-  else
-  {
+  } else {
     notify { '(3.1) - This operating system is not RedHat, skipping..': }
   }
 

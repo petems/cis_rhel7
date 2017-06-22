@@ -1,7 +1,6 @@
 class cis_rhel7::rule::rule_6_3_3 {
-
-#includes Rules:
-# 6.3.3 - Set Lockout for Failed Password Attempts (Not Scored)
+  #includes Rules:
+  # 6.3.3 - Set Lockout for Failed Password Attempts (Not Scored)
 
   file { '(6.3.3) - /etc/pam.d/password-auth is a symlink':
     ensure => link,
@@ -10,15 +9,15 @@ class cis_rhel7::rule::rule_6_3_3 {
   }
 
   file {'(6.3.3) - password-auth (required)':
-  ensure  => present,
-  path    => '/etc/pam.d/password-auth-ac',
-  owner   => root,
-  group   => root,
-  mode    => '0644',
-  content => epp('cis_rhel7/password-auth.epp'),
-}
+    ensure  => present,
+    path    => '/etc/pam.d/password-auth-ac',
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => epp('cis_rhel7/password-auth.epp'),
+  }
 
-#pam { '(6.3.3) - system-auth: pam_env.so (required)':
-# /etc/pam.d/system-auth-ac file setup is handled in rule_6_3_2.pp file
+  #pam { '(6.3.3) - system-auth: pam_env.so (required)':
+  # /etc/pam.d/system-auth-ac file setup is handled in rule_6_3_2.pp file
 
 } #EOF

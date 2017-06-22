@@ -1,7 +1,7 @@
 class cis_rhel7::rule::rule_1_1_14 {
 
-# includes Rules:
-# 1.1.14, 1.1.15, 1.1.16
+  # includes Rules:
+  # 1.1.14, 1.1.15, 1.1.16
 
   file_line { '(1.1.14) /dev/shm - nodev':
     path  => '/etc/fstab',

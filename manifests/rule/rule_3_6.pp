@@ -1,5 +1,4 @@
 class cis_rhel7::rule::rule_3_6 {
-
   # includes Rules:
   # 3.6 - Configure Network Time Protocol (NTP) (Scored)
 

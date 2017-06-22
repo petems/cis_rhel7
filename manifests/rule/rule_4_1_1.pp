@@ -1,5 +1,4 @@
 class cis_rhel7::rule::rule_4_1_1 {
-
   # includes Rules:
   # 4.1.1 - Disable IP Forwarding (Scored)
   # 4.1.2 - Disable Send Packet Redirects (Scored)

@@ -3,7 +3,6 @@ class cis_rhel7::rule::rule_6_2_1 (
   $settings = lookup({'name' => 'cis_rhel7::sshd_settings', 'default_value' => {}, 'merge' => {'strategy' => 'deep', 'merge_hash_arrays' => true}})
 
 ) {
-
   # includes Rules:
   # 6.2.1 - Set SSH Protocol to 2 (Scored)
   # 6.2.2 - Set LogLevel to INFO (Scored)

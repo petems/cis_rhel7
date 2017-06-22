@@ -1,5 +1,4 @@
 class cis_rhel7::rule::rule_7_3 {
-
   #includes Rules:
   # 6.5.2 - Verify that wheel is a group of root user (Scored)
   # 7.3   - Set Default Group for root Account (Scored)

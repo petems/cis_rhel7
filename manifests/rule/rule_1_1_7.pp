@@ -1,7 +1,7 @@
 class cis_rhel7::rule::rule_1_1_7 {
 
-# includes Rules:
-# 1.1.7, 1.1.8, 1.1.9, 1.1.10
+  # includes Rules:
+  # 1.1.7, 1.1.8, 1.1.9, 1.1.10
 
   file_line { '(1.1.7) /var/log is separate mount':
     path  => '/etc/fstab',

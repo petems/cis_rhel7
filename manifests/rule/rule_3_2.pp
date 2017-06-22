@@ -1,5 +1,4 @@
 class cis_rhel7::rule::rule_3_2 {
-
   # includes Rules:
   # 3.2 - Remove the X Window System (Scored)
 
