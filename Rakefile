@@ -1,6 +1,7 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 require 'metadata-json-lint/rake_task'
+require 'puppet-strings/tasks'
 
 if RUBY_VERSION >= '1.9'
   require 'rubocop/rake_task'
@@ -29,4 +30,15 @@ task :test do
     [:metadata_lint, :lint, :validate, :spec].each do |test|
       Rake::Task[test].invoke
     end
+end
+
+desc 'Generate documentation'
+task :doc do
+  Rake::Task['strings:generate'].invoke(
+      '**/*{.pp\,.rb}',  # patterns
+      'false', # debug
+      'false', # backtrace
+      'markdown',
+      '--readme README.md',
+  )
 end
