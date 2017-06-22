@@ -32,8 +32,8 @@ class cis_rhel7::rule::rule_6_2_1 (
   }
 
   file { "(6.2.3) - ${file} permissions":
-    name   => $file,
     ensure => file,
+    name   => $file,
     mode   => '0600',
     owner  => 'root',
     group  => 'root',
@@ -45,6 +45,5 @@ class cis_rhel7::rule::rule_6_2_1 (
     command     => 'systemctl restart sshd',
     refreshonly => true,
   }
-
 
 } #EOF

@@ -12,8 +12,8 @@ class cis_rhel7::rule::rule_1_1_5 {
 
 
   mount { '(1.1.6) /var/tmp is bound to /tmp':
-    name    => '/var/tmp',
     ensure  => 'mounted',
+    name    => '/var/tmp',
     device  => '/tmp',
     fstype  => 'none',
     options => 'bind',

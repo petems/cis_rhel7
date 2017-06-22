@@ -1,5 +1,5 @@
 class cis_rhel7::rule::rule_specialperms (
-  $files = lookup({'name' => 'cis_rhel7::specialperms', 'default_value' =>{}, 'merge' => { 'strategy' => 'deep', 'merge_hash_arrays' => true}}) #disable_140chars
+  $files = lookup({'name' => 'cis_rhel7::specialperms', 'default_value' =>{}, 'merge' => { 'strategy' => 'deep', 'merge_hash_arrays' => true}})
 ){
 
   $files.each |$myfile, $myperm| {

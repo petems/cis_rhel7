@@ -4,15 +4,15 @@ class cis_rhel7::rule::rule_3_6 {
   # 3.6 - Configure Network Time Protocol (NTP) (Scored)
 
   package { '(3.6) - NTP installed':
-    name   => 'ntp',
     ensure => present,
+    name   => 'ntp',
   }
 
   $file = '/etc/ntp.conf'
 
   file { '(3.6) - NTP conf file exists':
-    path    => $file,
     ensure  => file,
+    path    => $file,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -43,8 +43,8 @@ class cis_rhel7::rule::rule_3_6 {
     match  => '^OPTIONS.*$',
   }
   -> service { '(3.6) - NTP service running':
-    name      => 'ntpd',
-    ensure    => running,
+    ensure => running,
+    name   => 'ntpd',
   }
 
 } #EOF

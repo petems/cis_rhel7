@@ -5,8 +5,8 @@ class cis_rhel7::rule::rule_1_3_1 {
 
 
 package { '(1.3.1) - AIDE is installed':
-    name   => 'aide',
     ensure => present,
+    name   => 'aide',
 }
 
 exec { '(1.3.1) - Initialize AIDE':

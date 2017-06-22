@@ -15,8 +15,8 @@ class cis_rhel7::rule::rule_1_1_1 {
   }
 
   mount { '(1.1.1 - 1.1.4) /tmp is mounted':
-    name    => '/tmp',
     ensure  => 'mounted',
+    name    => '/tmp',
     device  => '/tmp',
     fstype  => 'tmpfs',
     options => 'nodev,nosuid,noexec'

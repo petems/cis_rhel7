@@ -21,13 +21,13 @@ class cis_rhel7::rule::rule_6_1_1 (
   # 6.1.11.1 - Restrict at/cron to Authorized Users (Scored)
 
   package { '(6.1.1) - Anacron installed':
-    name   => 'cronie-anacron',
     ensure => present,
+    name   => 'cronie-anacron',
   }
 
   service { '(6.1.2) - crond service is enabled':
-    name   => 'crond',
     ensure => running,
+    name   => 'crond',
     enable => true,
   }
 
@@ -51,40 +51,14 @@ class cis_rhel7::rule::rule_6_1_1 (
     }
   }
 
-  #each($files) |$item| {
-  #
-  #  $file = split($item,'%')
-  #
-  #  file { "(${file[1]}) - ${file[0]} permissions":
-  #    ensure => file,
-  #    path   =>  $file[0],
-  #    mode   => '0600',
-  #    owner  => 'root',
-  #    group  => 'root',
-  #  }
-  #}
-  #
-  #each($dirs) |$item2| {
-  #
-  #  $dir = split($item2,'%')
-  #
-  #  file { "(${dir[1]}) - ${dir[0]} permissions":
-  #    ensure => directory,
-  #    path   => $dir[0],
-  #    mode   => '0700',
-  #    owner  => root,
-  #    group  => root,
-  #  }
-  #}
-
   file { '(6.1.10.1) delete /etc/at.deny file':
-    path   => '/etc/at.deny',
     ensure => absent,
+    path   => '/etc/at.deny',
   }
 
   file { '(6.1.11.1) delete /etc/cron.deny file':
-    path   => '/etc/cron.deny',
     ensure => absent,
+    path   => '/etc/cron.deny',
   }
 
 } #EOF

@@ -10,8 +10,8 @@ $sourcefile = '/etc/grub.d/40_custom'
 $grubpwd = lookup({'name' => 'cis_rhel7::grubpwd', 'default_value' => {}, 'merge' => {'strategy' => 'deep', 'merge_hash_arrays' => true}})
 
 file { "(1.5.1 - 1.5.2) - ${file} ownership":
-  path   => $file,
   ensure => file,
+  path   => $file,
   owner  => 'root',
   group  => 'root',
   mode   => '0400',

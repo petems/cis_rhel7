@@ -7,8 +7,8 @@ if $::operatingsystem == 'RedHat'
 {
 
   service { '(1.2.4) rhnsd service is disabled':
-    name   => 'rhnsd',
     ensure => stopped,
+    name   => 'rhnsd',
     enable => false,
   }
 }

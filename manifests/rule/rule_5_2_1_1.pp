@@ -9,8 +9,8 @@ class cis_rhel7::rule::rule_5_2_1_1 {
   $file = '/etc/audit/auditd.conf'
 
   package { '(5.2) Ensure audit package is installed':
-    name   => 'audit',
     ensure => present,
+    name   => 'audit',
   }
 
   file_line { "(5.2.1.1) - ${file}: max_log_file":
