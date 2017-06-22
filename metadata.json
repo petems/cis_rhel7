@@ -1,6 +1,6 @@
 {
   "name": "bossbear-cis_rhel7",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "author": "Andrew Park <andrew@aparksolutions.com>",
   "license": "Apache-2.0",
   "summary": "CIS Compliance on RHEL 7",
@@ -11,12 +11,18 @@
   "operatingsystem_support": [
     {
     "operatingsystem":"RedHat",
-    "operatingsystemrelease":[ "7.0" ]
+    "operatingsystemrelease":[ "7.0" ],
+    },
+    {
+    "operatingsystem": "CentOS",
+    "operatingsystemrelease": [ "7.0" ]
     }
    ],
   "dependencies": [
     { "name": "puppetlabs-stdlib", "version_requirement": ">= 2.2.0 < 5.0.0" },
-    { "name": "herculesteam-augeasproviders_pam", "version_requirement": ">= 2.1.0 < 5.0.0" }
+    { "name": "herculesteam-augeasproviders_core", "version_requirement": ">= 2.1.3 < 5.0.0" },
+    { "name": "herculesteam-augeasproviders_pam", "version_requirement": ">= 2.1.0 < 5.0.0" },
+    { "name": "fiddyspence/sysctl", "version_requirement": ">= 1.1.0 < 5.0.0" }
   ],
   "requirements": [
     {
