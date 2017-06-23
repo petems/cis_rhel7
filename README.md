@@ -78,6 +78,7 @@ Once you've cloned it you can run it two ways:
         puppet module install fiddyspence-sysctl
         cd cis_rhel7
         puppet apply -v --modulepath /etc/puppetlabs/code/environment/production/modules examples/init.pp
+
 Obviously, you can add --noop flag to run things in an audit mode.
 
 In order to run RSpec testing run the following commands:
@@ -91,6 +92,29 @@ In order to run beaker testing run the following commands:
     cd cis_rhel7
     bundle install --path vendor/path
     bundle exec rake beaker:centos-7-x86_64-docker
+
+## Hiera structure and using nodegroup YAML
+This is current hiera structure:
+1. node (trusted cert)
+2. node group (user defined)
+3. default (common.yaml)
+
+The hiera directory structure is as following:
+
+    data/
+    data/common.yaml
+    data/nodes/%{mynode's trusted cert name}.yaml
+    data/nodegroups/%{mynodegroup}.yaml
+
+In order to define a custom node group, do the following:
+
+1. Create /etc/.cis_rhel7_nodegroup file
+2. Insert the desired node group name in the created file (i.e. mygroup)
+3. Create matching yaml file in data/nodegroups directory (i.e. data/nodegroups/mygroup.yaml)
+
+cis_rhel7 module knows to look in the /etc/.cis_rhel7_nodegroup file and hiera structure uses the facts that come from node group YAML file before common.yaml.
+
+NOTE: Current segregation level is at the hash level. Do NOT expect to transform a single element in an array that's in the common.yaml file via node or node group YAML file.  Copy the entire array (or hash) into the node group YAML and the transform the element.
 
 ## Limitations
 

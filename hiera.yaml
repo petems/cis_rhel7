@@ -4,5 +4,9 @@ defaults:
   datadir: data
   data_hash: yaml_data
 hierarchy:
+    - name: "Node YAML"
+      path: "nodes/%{facts.trusted.certname}.yaml"
+    - name: "Node Group YAML File"
+      path: "nodegroups/%{facts.cis_rhel7_nodegroup}.yaml"
     - name: "Default yaml file"
       path: "common.yaml"
