@@ -93,12 +93,28 @@ In order to run beaker testing run the following commands:
     bundle install --path vendor/path
     bundle exec rake beaker:centos-7-x86_64-docker
 
-## Custom cis_rhel7_custom.yaml
-In some cases, a user may not want all CIS rules to be applied.  To accommodate that execcontrol hash has been created in common.yaml to enable or disable a rule.
+## Hiera structure and using nodegroup YAML
+This is current hiera structure:
+1. node (trusted cert)
+2. node group (user defined)
+3. default (common.yaml)
 
-However, in cases where a user would like to preserve common.yaml as default, one can create an empty /etc/.cis_rhel7_custom file which will cause cis_rhel7 module to use cis_rhel7_custom.yaml file instead.  Every hash or array in common.yaml can easily be replicated and altered in cis_rhel7_custom.yaml, whose effect can be reverted back by deleting /etc/.cis_rhel7_custom file.
+The hiera directory structure is as following:
 
-NOTE: DO replicate ALL entries from common.yaml once the /etc/.cis_rhel7_custom control file is created.  Otherwise, the missing configuration in the yaml file will result in missing configuration in the system.
+    data/
+    data/common.yaml
+    data/nodes/%{mynode's trusted cert name}.yaml
+    data/nodegroups/%{mynodegroup}.yaml
+
+In order to define a custom node group, do the following:
+
+1. Create /etc/.cis_rhel7_nodegroup file
+2. Insert the desired node group name in the created file (i.e. mygroup)
+3. Create matching yaml file in data/nodegroups directory (i.e. data/nodegroups/mygroup.yaml)
+
+cis_rhel7 module knows to look in the /etc/.cis_rhel7_nodegroup file and hiera structure uses the facts that come from node group YAML file before common.yaml.
+
+NOTE: Current segregation level is at the hash level. Do NOT expect to transform a single element in an array that's in the common.yaml file via node or node group YAML file.  Copy the entire array (or hash) into the node group YAML and the transform the element.
 
 ## Limitations
 
