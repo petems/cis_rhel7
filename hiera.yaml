@@ -4,5 +4,5 @@ defaults:
   datadir: data
   data_hash: yaml_data
 hierarchy:
-    - name: "Default yaml file"
-      path: "common.yaml"
+    - name: "Default or Custom yaml file"
+      path: "%{facts.cis_rhel7_custom}.yaml"

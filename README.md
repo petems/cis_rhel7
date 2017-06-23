@@ -78,6 +78,7 @@ Once you've cloned it you can run it two ways:
         puppet module install fiddyspence-sysctl
         cd cis_rhel7
         puppet apply -v --modulepath /etc/puppetlabs/code/environment/production/modules examples/init.pp
+
 Obviously, you can add --noop flag to run things in an audit mode.
 
 In order to run RSpec testing run the following commands:
@@ -91,6 +92,13 @@ In order to run beaker testing run the following commands:
     cd cis_rhel7
     bundle install --path vendor/path
     bundle exec rake beaker:centos-7-x86_64-docker
+
+## Custom cis_rhel7_custom.yaml
+In some cases, a user may not want all CIS rules to be applied.  To accommodate that execcontrol hash has been created in common.yaml to enable or disable a rule.
+
+However, in cases where a user would like to preserve common.yaml as default, one can create an empty /etc/.cis_rhel7_custom file which will cause cis_rhel7 module to use cis_rhel7_custom.yaml file instead.  Every hash or array in common.yaml can easily be replicated and altered in cis_rhel7_custom.yaml, whose effect can be reverted back by deleting /etc/.cis_rhel7_custom file.
+
+NOTE: DO replicate ALL entries from common.yaml once the /etc/.cis_rhel7_custom control file is created.  Otherwise, the missing configuration in the yaml file will result in missing configuration in the system.
 
 ## Limitations
 

@@ -22,20 +22,18 @@ class cis_rhel7::rule::rule_7_1_1 {
     replace => true,
   }
 
-  # For BNS PASS_MIN_DAYS is 1
   file_line { '(7.1.2) - Set password change minimum number of days':
     ensure  => present,
     path    => $file,
-    line    => 'PASS_MIN_DAYS 1',
+    line    => 'PASS_MIN_DAYS 7',
     match   => '^PASS_MIN_DAYS',
     replace => true,
   }
 
-  # For BNS PASS_WARN_AGE is 10
   file_line { '(7.1.3) - Set password expiring warning days':
     ensure  => present,
     path    => $file,
-    line    => 'PASS_WARN_AGE 10',
+    line    => 'PASS_WARN_AGE 7',
     match   => '^PASS_WARN_AGE',
     replace => true,
   }

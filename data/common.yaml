@@ -221,3 +221,7 @@ cis_rhel7:banners:
   - '/etc/motd'
   - '/etc/issue'
   - '/etc/issue.net'
+
+# Rule: added permission settings
+cis_rhel7::specialperms:
+  '/root': '0700'

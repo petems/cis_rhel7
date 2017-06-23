@@ -3,7 +3,7 @@
 
 class cis_rhel7 (
 
-  $execcontrol = lookup({'name' => 'cis_rhel7::execcontrol', 'default_value' => {}, 'merge' => {'strategy' => 'deep', 'merge_hash_array' => true}})
+  $execcontrol = lookup({'name' => 'cis_rhel7::execcontrol', 'default_value' => {}, 'merge' => {'strategy' => 'deep', 'merge_hash_arrays' => true}})
 
 ) {
 
