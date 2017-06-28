@@ -70,14 +70,14 @@ Once you've cloned it you can run it two ways:
         bundle exec rake spec_prep  #this will populate spec/fixtures/modules dir.
         puppet apply -v --modulepath spec/fixtures/modules examples/init.pp
 
-2. Manually stage the dependent modules and run against /etc/puppetlabs/code/environment/production/modules directory:
+2. Manually stage the dependent modules and run against /etc/puppetlabs/code/environments/production/modules directory:
 
         puppet module install puppetlabs-stdlib
         puppet module install herculesteam-augeasproviders_core
         puppet module install herculesteam-augeasproviders_pam
         puppet module install fiddyspence-sysctl
         cd cis_rhel7
-        puppet apply -v --modulepath /etc/puppetlabs/code/environment/production/modules examples/init.pp
+        puppet apply -v --modulepath /etc/puppetlabs/code/environments/production/modules examples/init.pp
 
 Obviously, you can add --noop flag to run things in an audit mode.
 
