@@ -1,6 +1,6 @@
 {
   "name": "bossbear-cis_rhel7",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "author": "Andrew Park <andrew@aparksolutions.com>",
   "license": "Apache-2.0",
   "summary": "CIS Compliance on RHEL 7",
