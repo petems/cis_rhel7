@@ -34,6 +34,10 @@ class cis_rhel7::rule::rule_5_1_1 (
     group   => 'root',
     require => Package['(5.1.1) - Rsyslog installed'],
   }
+  -> exec { 'Ensure /etc/rsyslog.d/* files are also mode 0600':
+    command => 'chmod 600 /etc/rsyslog.d/*',
+    path    => [ '/bin', '/sbin' ],
+  }
 
   $rsyslogcontent.each |$facility, $destlog| {
     $logfile = regsubst ($destlog,'^-','')
