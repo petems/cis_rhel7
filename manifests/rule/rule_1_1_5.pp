@@ -6,8 +6,8 @@ class cis_rhel7::rule::rule_1_1_5 {
   file_line { '(1.1.5) /var is mounted':
     ensure => present,
     path   => '/etc/fstab',
-    line   => '<volume>  /var  <fstype>  nodev 0 0',
-    match  => '\*/var',
+    line   => '#<volume>  /var  <fstype>  nodev 0 0',
+    #match  => '\*/var',
   }
 
 
