@@ -217,7 +217,7 @@ cis_rhel7::sshd_settings:
   'Banner /etc/issue.net': 'Rule 6.2.14'
 
 # Rule 8.1
-cis_rhel7:banners:
+cis_rhel7::banners:
   - '/etc/motd'
   - '/etc/issue'
   - '/etc/issue.net'
