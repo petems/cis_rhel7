@@ -5,20 +5,20 @@ class cis_rhel7::rule::rule_1_1_7 {
 
   file_line { '(1.1.7) /var/log is separate mount':
     path  => '/etc/fstab',
-    line  => '<volume>  /var/log  <fstype> nodev 0 0',
-    match => '\*/var/log\*nodev',
+    line  => '#<volume>  /var/log  <fstype> nodev 0 0',
+    #match => '\*/var/log\*nodev',
   }
 
   file_line { '(1.1.8) /var/log/audit is separate mount':
     path  => '/etc/fstab',
-    line  => '<volume>  /var/log/audit  <fstype> nodev 0 0',
-    match => '\*/var/log/audit',
+    line  => '#<volume>  /var/log/audit  <fstype> nodev 0 0',
+    #match => '\*/var/log/audit',
   }
 
   file_line { '(1.1.9 - 1.1.10) /home is separate mount':
     path  => '/etc/fstab',
-    line  => '<volume> /home <fstype>  nodev 0 0',
-    match => '\*/home\*nodev',
+    line  => '#<volume> /home <fstype>  nodev 0 0',
+    #match => '\*/home\*nodev',
   }
 
 
