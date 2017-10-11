@@ -6,7 +6,6 @@ class cis_rhel7::rule::rule_4_0 {
   # Use fiddyspence-sysctl module to handle all sysctl settings
   sysctl { 'net.ipv4.tcp_max_syn_backlog':
     ensure    => present,
-    permanent => yes,
     value     => '1024',
   }
 
