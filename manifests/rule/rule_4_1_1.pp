@@ -7,18 +7,15 @@ class cis_rhel7::rule::rule_4_1_1 {
 
   sysctl { 'net.ipv4.ip_forward':
     ensure    => present,
-    permanent => yes,
     value     => '0',
   }
 
   sysctl { 'net.ipv4.conf.all.send_redirects':
     ensure    => present,
-    permanent => yes,
     value     => '0',
   }
   sysctl {'net.ipv4.conf.default.send_redirects':
     ensure    => present,
-    permanent => yes,
     value     => '0',
   }
 
